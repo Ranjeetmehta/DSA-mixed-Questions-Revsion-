@@ -1,0 +1,47 @@
+https://course.acciojob.com/idle?question=7629ffcc-28a9-4576-a920-6e5f52991a52
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+
+//By  Recursion = Bruteforce
+class Solution{
+
+    public static long numTrees(int n) {
+        //write your code here
+		        
+        return numTrees(1,n); // calling the numtree private wala
+    }
+    
+    // 1 2 3 4 ,  1 = start ,  4 = end
+    private static long numTrees(int start, int end)
+    {
+        if(start>=end) // if the n = 1 then 1
+        {
+            return 1;
+        }
+        
+        long countunique =0; // hence we will count the unique 
+        for(int i=start; i<=end; i++) // take i as root
+        {
+            countunique  += numTrees(start, i-1) * numTrees(i+1, end); // By Ncr combination as we have seen
+        }
+        
+        return countunique;
+    
+    }
+}
+class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(Solution.numTrees(n));
+    }
+}
